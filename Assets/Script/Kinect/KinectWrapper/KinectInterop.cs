@@ -36,7 +36,7 @@ namespace Kinect {
 	public static class Constants
 	{
 		public static int NuiSkeletonCount = 6;
-    	public static int NuiSkeletonMaxTracked = 6;
+    	public static int NuiSkeletonMaxTracked = 2;
     	public static int NuiSkeletonInvalidTrackingID = 0;
 		
 		public static float NuiDepthHorizontalFOV = 58.5f;

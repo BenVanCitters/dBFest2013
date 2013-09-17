@@ -41,13 +41,13 @@ public class SkeletonWrapper : MonoBehaviour {
 		trackedPlayers = new int[Kinect.Constants.NuiSkeletonMaxTracked];
 		trackedPlayers[0] = -1;
 		trackedPlayers[1] = -1;
-		bonePos = new Vector3[6,(int)Kinect.NuiSkeletonPositionIndex.Count];
-		rawBonePos = new Vector3[6,(int)Kinect.NuiSkeletonPositionIndex.Count];
-		boneVel = new Vector3[6,(int)Kinect.NuiSkeletonPositionIndex.Count];
+		bonePos = new Vector3[2,(int)Kinect.NuiSkeletonPositionIndex.Count];
+		rawBonePos = new Vector3[2,(int)Kinect.NuiSkeletonPositionIndex.Count];
+		boneVel = new Vector3[2,(int)Kinect.NuiSkeletonPositionIndex.Count];
 		
-		boneState = new Kinect.NuiSkeletonPositionTrackingState[6,(int)Kinect.NuiSkeletonPositionIndex.Count];
-		boneLocalOrientation = new Quaternion[6, (int)Kinect.NuiSkeletonPositionIndex.Count];
-		boneAbsoluteOrientation = new Quaternion[6, (int)Kinect.NuiSkeletonPositionIndex.Count];
+		boneState = new Kinect.NuiSkeletonPositionTrackingState[2,(int)Kinect.NuiSkeletonPositionIndex.Count];
+		boneLocalOrientation = new Quaternion[2, (int)Kinect.NuiSkeletonPositionIndex.Count];
+		boneAbsoluteOrientation = new Quaternion[2, (int)Kinect.NuiSkeletonPositionIndex.Count];
 		
 		//create the transform matrix that converts from kinect-space to world-space
 		Matrix4x4 trans = new Matrix4x4();
@@ -68,7 +68,7 @@ public class SkeletonWrapper : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-//		Debug.Log("tracked players: " +  Kinect.Constants.NuiSkeletonCount);
+		
 	}
 	
 	void LateUpdate () {
@@ -119,92 +119,88 @@ public class SkeletonWrapper : MonoBehaviour {
 		//update players
 		for (int ii = 0; ii < Kinect.Constants.NuiSkeletonCount; ii++)
 		{
-			trackedPlayers[ii] = -1;
 			players[ii] = kinect.getSkeleton().SkeletonData[ii].eTrackingState;
-//			Debug.Log("player["+ii+"]: " + players[ii]);
 			if (players[ii] == Kinect.NuiSkeletonTrackingState.SkeletonTracked)
 			{
 				tracked[trackedCount] = ii;
 				trackedCount++;
-				trackedPlayers[ii] = ii;
 			}
 		}
-//		Debug.Log("tracked count: " + trackedCount);
 		//this should really use trackingID instead of index, but for now this is fine
-//		switch (trackedCount)
-//		{
-//		case 0:
-//			trackedPlayers[0] = -1;
-//			trackedPlayers[1] = -1;
-//			break;
-//		case 1:
-//			//last frame there were no players: assign new player to p1
-//			if (trackedPlayers[0] < 0 && trackedPlayers[1] < 0)
-//				trackedPlayers[0] = tracked[0];
-//			//last frame there was one player, keep that player in the same spot
-//			else if (trackedPlayers[0] < 0) 
-//				trackedPlayers[1] = tracked[0];
-//			else if (trackedPlayers[1] < 0)
-//				trackedPlayers[0] = tracked[0];
-//			//there were two players, keep the one with the same index (if possible)
-//			else
-//			{
-//				if (tracked[0] == trackedPlayers[0])
-//					trackedPlayers[1] = -1;
-//				else if (tracked[0] == trackedPlayers[1])
-//					trackedPlayers[0] = -1;
-//				else
-//				{
-//					trackedPlayers[0] = tracked[0];
-//					trackedPlayers[1] = -1;
-//				}
-//			}
-//			break;
-//		case 2:
-//			//last frame there were no players: assign new players to p1 and p2
-//			if (trackedPlayers[0] < 0 && trackedPlayers[1] < 0)
-//			{
-//				trackedPlayers[0] = tracked[0];
-//				trackedPlayers[1] = tracked[1];
-//			}
-//			//last frame there was one player, keep that player in the same spot
-//			else if (trackedPlayers[0] < 0)
-//			{
-//				if (trackedPlayers[1] == tracked[0])
-//					trackedPlayers[0] = tracked[1];
-//				else{
-//					trackedPlayers[0] = tracked[0];
-//					trackedPlayers[1] = tracked[1];
-//				}
-//			}
-//			else if (trackedPlayers[1] < 0)
-//			{
-//				if (trackedPlayers[0] == tracked[1])
-//					trackedPlayers[1] = tracked[0];
-//				else{
-//					trackedPlayers[0] = tracked[0];
-//					trackedPlayers[1] = tracked[1];
-//				}
-//			}
-//			//there were two players, keep the one with the same index (if possible)
-//			else
-//			{
-//				if (trackedPlayers[0] == tracked[1] || trackedPlayers[1] == tracked[0])
-//				{
-//					trackedPlayers[0] = tracked[1];
-//					trackedPlayers[1] = tracked[0];
-//				}
-//				else
-//				{
-//					trackedPlayers[0] = tracked[0];
-//					trackedPlayers[1] = tracked[1];
-//				}
-//			}
-//			break;
-//		}
+		switch (trackedCount)
+		{
+		case 0:
+			trackedPlayers[0] = -1;
+			trackedPlayers[1] = -1;
+			break;
+		case 1:
+			//last frame there were no players: assign new player to p1
+			if (trackedPlayers[0] < 0 && trackedPlayers[1] < 0)
+				trackedPlayers[0] = tracked[0];
+			//last frame there was one player, keep that player in the same spot
+			else if (trackedPlayers[0] < 0) 
+				trackedPlayers[1] = tracked[0];
+			else if (trackedPlayers[1] < 0)
+				trackedPlayers[0] = tracked[0];
+			//there were two players, keep the one with the same index (if possible)
+			else
+			{
+				if (tracked[0] == trackedPlayers[0])
+					trackedPlayers[1] = -1;
+				else if (tracked[0] == trackedPlayers[1])
+					trackedPlayers[0] = -1;
+				else
+				{
+					trackedPlayers[0] = tracked[0];
+					trackedPlayers[1] = -1;
+				}
+			}
+			break;
+		case 2:
+			//last frame there were no players: assign new players to p1 and p2
+			if (trackedPlayers[0] < 0 && trackedPlayers[1] < 0)
+			{
+				trackedPlayers[0] = tracked[0];
+				trackedPlayers[1] = tracked[1];
+			}
+			//last frame there was one player, keep that player in the same spot
+			else if (trackedPlayers[0] < 0)
+			{
+				if (trackedPlayers[1] == tracked[0])
+					trackedPlayers[0] = tracked[1];
+				else{
+					trackedPlayers[0] = tracked[0];
+					trackedPlayers[1] = tracked[1];
+				}
+			}
+			else if (trackedPlayers[1] < 0)
+			{
+				if (trackedPlayers[0] == tracked[1])
+					trackedPlayers[1] = tracked[0];
+				else{
+					trackedPlayers[0] = tracked[0];
+					trackedPlayers[1] = tracked[1];
+				}
+			}
+			//there were two players, keep the one with the same index (if possible)
+			else
+			{
+				if (trackedPlayers[0] == tracked[1] || trackedPlayers[1] == tracked[0])
+				{
+					trackedPlayers[0] = tracked[1];
+					trackedPlayers[1] = tracked[0];
+				}
+				else
+				{
+					trackedPlayers[0] = tracked[0];
+					trackedPlayers[1] = tracked[1];
+				}
+			}
+			break;
+		}
 		
 		//update the bone positions, velocities, and tracking states)
-		for (int player = 0; player < trackedPlayers.Length; player++)
+		for (int player = 0; player < 2; player++)
 		{
 			//print(player + ", " +trackedPlayers[player]);
 			if (trackedPlayers[player] >= 0)

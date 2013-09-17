@@ -107,7 +107,7 @@ public class KinectSensor : MonoBehaviour, KinectInterface {
 			int hr = NativeMethods.NuiInitialize(NuiInitializeFlags.UsesDepthAndPlayerIndex | NuiInitializeFlags.UsesSkeleton | NuiInitializeFlags.UsesColor);
             if (hr != 0)
 			{
-            	throw new Exception("NuiInitialize Failed. HRESULT Fail Code: " + hr);
+            	throw new Exception("NuiInitialize Failed.");
 			}
 			
 			hr = NativeMethods.NuiSkeletonTrackingEnable(IntPtr.Zero, skeltonTrackingMode);
