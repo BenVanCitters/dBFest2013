@@ -44,6 +44,9 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\MyKinectWrapper.cs" />
+     <Compile Include="Assets\RadialForce.cs" />
+     <Compile Include="Assets\Script\KUInterface.cs" />
      <Compile Include="Assets\Script\Kinect\KinectImgControllers\DisplayColor.cs" />
      <Compile Include="Assets\Script\Kinect\KinectImgControllers\DisplayDepth.cs" />
      <Compile Include="Assets\Script\Kinect\KinectModelControllers\KinectModelControllerV2.cs" />
@@ -55,8 +58,8 @@
      <Compile Include="Assets\Script\Kinect\KinectWrapper\KinectRecorder.cs" />
      <Compile Include="Assets\Script\Kinect\KinectWrapper\KinectSensor.cs" />
      <Compile Include="Assets\Script\Kinect\KinectWrapper\SkeletonWrapper.cs" />
-     <Compile Include="Assets\UVAnimator.cs" />
-     <Compile Include="Assets\kinectTest.cs" />
+     <Compile Include="Assets\Script\UVAnimator.cs" />
+     <Compile Include="Assets\Script\kinectTest.cs" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Particle Shaders\Mobile Multiply Culled.shader" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Miscellaneous Shaders\Mobile Background.shader" />
@@ -64,6 +67,7 @@
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Miscellaneous Shaders\Mobile Detail.shader" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Asset\Shaders\Normal-Diffuse.shader" />
+     <None Include="Assets\bloom.shader" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-BasicOutline.shader" />
      <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
