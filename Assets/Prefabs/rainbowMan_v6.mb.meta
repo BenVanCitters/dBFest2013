@@ -33,6 +33,7 @@ ModelImporter:
     100054: root_joint
     100056: skeleton
     100058: spine
+    100060: Skeleton
     400000: head
     400002: hip_center
     400004: left_ankle
@@ -63,10 +64,13 @@ ModelImporter:
     400054: root_joint
     400056: skeleton
     400058: spine
+    400060: Skeleton
     4300000: mesh
+    4300002: Skeleton
     7400000: Take 001
     9500000: //RootNode
     13700000: mesh
+    13700002: Skeleton
   materials:
     importMaterials: 1
     materialName: 0
