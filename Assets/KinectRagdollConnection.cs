@@ -8,7 +8,7 @@ public class KinectRagdollConnection : MonoBehaviour {
 	public KinectModelControllerV2 kinectSkeleton;
 	//public int KinectSkeletonIndex = 0;
 	
-//	[HideInInspector]
+	[HideInInspector]
 	public bool isTrackingKinect = false;
 	// Use this for initialization
 	void Start () {
