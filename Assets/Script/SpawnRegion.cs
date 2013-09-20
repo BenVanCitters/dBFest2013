@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MyKinectWrapper : MonoBehaviour {
+public class SpawnRegion : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

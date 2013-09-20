@@ -168,8 +168,10 @@ public class KinectModelControllerV2 : MonoBehaviour {
 	}
 	
 	void Update () {
+		bool plSkel = sw.pollSkeleton();
+//		Debug.Log("player: " + player + ", plSkel: " + plSkel);
 		//update the data from the kinect if necessary
-		if(sw.pollSkeleton()){
+		if(plSkel){
 			for( int ii = 0; ii < (int)Kinect.NuiSkeletonPositionIndex.Count; ii++)
 			{
 				if( ((uint)Mask & (uint)(1 << ii) ) > 0 && (_nullMask & (uint)(1 << ii)) <= 0 )

@@ -44,8 +44,8 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\MyKinectWrapper.cs" />
-     <Compile Include="Assets\RadialForce.cs" />
+     <Compile Include="Assets\KinectRagdollConnection.cs" />
+     <Compile Include="Assets\Script\InternalDirectionalForce.cs" />
      <Compile Include="Assets\Script\KUInterface.cs" />
      <Compile Include="Assets\Script\Kinect\KinectImgControllers\DisplayColor.cs" />
      <Compile Include="Assets\Script\Kinect\KinectImgControllers\DisplayDepth.cs" />
@@ -58,8 +58,9 @@
      <Compile Include="Assets\Script\Kinect\KinectWrapper\KinectRecorder.cs" />
      <Compile Include="Assets\Script\Kinect\KinectWrapper\KinectSensor.cs" />
      <Compile Include="Assets\Script\Kinect\KinectWrapper\SkeletonWrapper.cs" />
+     <Compile Include="Assets\Script\RadialForce.cs" />
+     <Compile Include="Assets\Script\SpawnRegion.cs" />
      <Compile Include="Assets\Script\UVAnimator.cs" />
-     <Compile Include="Assets\Script\kinectTest.cs" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Particle Shaders\Mobile Multiply Culled.shader" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Miscellaneous Shaders\Mobile Background.shader" />
