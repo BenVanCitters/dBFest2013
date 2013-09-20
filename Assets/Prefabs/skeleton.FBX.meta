@@ -32,6 +32,34 @@ ModelImporter:
     100052: Bone017
     100054: Skeleton
     100056: //RootNode
+    100058: head
+    100060: hip_center
+    100062: left_ankle
+    100064: left_collar
+    100066: left_elbow
+    100068: left_fingers
+    100070: left_foot
+    100072: left_hand
+    100074: left_hip
+    100076: left_knee
+    100078: left_shoulder
+    100080: left_thigh
+    100082: left_wrist
+    100084: neck
+    100086: right_ankle
+    100088: right_collar
+    100090: right_elbow
+    100092: right_fingers
+    100094: right_foot
+    100096: right_hand
+    100098: right_hip
+    100100: right_knee
+    100102: right_shoulder
+    100104: right_thigh
+    100106: right_wrist
+    100108: root_joint
+    100110: skeleton
+    100112: spine
     400000: Bone001
     400002: Bone002
     400004: Bone003
@@ -61,6 +89,36 @@ ModelImporter:
     400052: Bone017
     400054: Skeleton
     400056: //RootNode
+    400058: head
+    400060: hip_center
+    400062: left_ankle
+    400064: left_collar
+    400066: left_elbow
+    400068: left_fingers
+    400070: left_foot
+    400072: left_hand
+    400074: left_hip
+    400076: left_knee
+    400078: left_shoulder
+    400080: left_thigh
+    400082: left_wrist
+    400084: neck
+    400086: right_ankle
+    400088: right_collar
+    400090: right_elbow
+    400092: right_fingers
+    400094: right_foot
+    400096: right_hand
+    400098: right_hip
+    400100: right_knee
+    400102: right_shoulder
+    400104: right_thigh
+    400106: right_wrist
+    400108: root_joint
+    400110: skeleton
+    400112: spine
+    2300000: Skeleton
+    3300000: Skeleton
     4300000: Skeleton
     9500000: //RootNode
     13700000: Skeleton
