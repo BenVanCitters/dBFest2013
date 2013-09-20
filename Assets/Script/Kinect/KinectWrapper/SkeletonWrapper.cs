@@ -126,6 +126,7 @@ public class SkeletonWrapper : MonoBehaviour {
 				trackedCount++;
 			}
 		}
+		Debug.Log("trackedcount: " + trackedCount);
 		//this should really use trackingID instead of index, but for now this is fine
 		switch (trackedCount)
 		{
