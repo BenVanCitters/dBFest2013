@@ -44,6 +44,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\KinectModelControllerTorso.cs" />
      <Compile Include="Assets\KinectRagdollConnection.cs" />
      <Compile Include="Assets\Script\InternalDirectionalForce.cs" />
      <Compile Include="Assets\Script\KUInterface.cs" />

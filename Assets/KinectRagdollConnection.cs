@@ -5,7 +5,7 @@ using System.Collections;
 //kinect skeleton.
 public class KinectRagdollConnection : MonoBehaviour {
 	public Rigidbody ragdollBase;
-	public KinectModelControllerV2 kinectSkeleton;
+	public KinectModelControllerTorso kinectSkeleton;
 	//public int KinectSkeletonIndex = 0;
 	
 	[HideInInspector]
@@ -24,7 +24,11 @@ public class KinectRagdollConnection : MonoBehaviour {
 		{
 			isTrackingKinect = isNextFrameTracked;
 			kinectSkeleton.enabled = isTrackingKinect;
-			recusivelySetRagDollEnabled(this.gameObject,isTrackingKinect);
+
+			foreach (Transform child in ragdollBase.transform)
+			{
+				recusivelySetRagDollEnabled(child.gameObject,isTrackingKinect);
+			}
 		}
 	}
 	
