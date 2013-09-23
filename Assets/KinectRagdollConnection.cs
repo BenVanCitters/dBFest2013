@@ -4,6 +4,8 @@ using System.Collections;
 //this class manages whether the model is controlled by a ragdoll or a
 //kinect skeleton.
 public class KinectRagdollConnection : MonoBehaviour {
+	public ParticleSystem LeftHandParticles;
+	public ParticleSystem RightHandParticles;
 	public Rigidbody ragdollBase;
 	public KinectModelControllerTorso kinectSkeleton;
 	//public int KinectSkeletonIndex = 0;
@@ -12,7 +14,8 @@ public class KinectRagdollConnection : MonoBehaviour {
 	public bool isTrackingKinect = false;
 	// Use this for initialization
 	void Start () {
-	kinectSkeleton.enabled = isTrackingKinect;
+		kinectSkeleton.enabled = isTrackingKinect;
+		setTracking(isTrackingKinect);
 	}
 	
 	// Update is called once per frame
@@ -22,16 +25,24 @@ public class KinectRagdollConnection : MonoBehaviour {
 		bool isNextFrameTracked= (kinectSkeleton.sw.trackedPlayers[kinectSkeleton.player] >= 0);
 		if(isTrackingKinect != isNextFrameTracked)	
 		{
-			isTrackingKinect = isNextFrameTracked;
-			kinectSkeleton.enabled = isTrackingKinect;
-
-			foreach (Transform child in ragdollBase.transform)
-			{
-				recusivelySetRagDollEnabled(child.gameObject,isTrackingKinect);
-			}
+			setTracking(isTrackingKinect);
 		}
 	}
 	
+	
+	void setTracking(bool tracking)
+	{
+		isTrackingKinect = tracking;
+			
+		kinectSkeleton.enabled = isTrackingKinect;
+		LeftHandParticles.gameObject.SetActive( isTrackingKinect);
+		RightHandParticles.gameObject.SetActive( isTrackingKinect);
+//			RightHandParticles.enableEmission = isTrackingKinect;
+		foreach (Transform child in ragdollBase.transform)
+		{
+			recusivelySetRagDollEnabled(child.gameObject,isTrackingKinect);
+		}
+	}
 	
 	void recusivelySetRagDollEnabled(GameObject go, bool isKinematic)
 	{
