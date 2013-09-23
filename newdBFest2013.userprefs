@@ -8,11 +8,10 @@
             <Node name="Assets" expanded="True">
               <Node name="Script" expanded="True">
                 <Node name="Kinect" expanded="True">
-                  <Node name="KinectModelControllers" expanded="True" />
                   <Node name="KinectWrapper" expanded="True" />
                 </Node>
-                <Node name="UVAnimator.cs" selected="True" />
               </Node>
+              <Node name="FlipCameraX.cs" selected="True" />
             </Node>
           </Node>
         </State>

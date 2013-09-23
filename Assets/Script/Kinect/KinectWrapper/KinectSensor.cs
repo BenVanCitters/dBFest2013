@@ -29,10 +29,18 @@ public class KinectSensor : MonoBehaviour, KinectInterface {
 	/// where (relative to the ground directly under the sensor) should the kinect register as 0,0,0
 	/// </summary>
 	public Vector3 kinectCenter;
+	
+	/// <summary>
+	/// Whether or not the Kinect should use the lookAt vector to tilt upwards or downwards on initialization
+	/// </summary>
+	public bool AdjustSensorAngle = false;
+	
 	/// <summary>
 	/// what point (relative to kinectCenter) should the sensor look at
 	/// </summary>
 	public Vector4 lookAt;
+	
+	
 	
 	/// <summary>
 	/// Variables used to pass to smoothing function. Values are set to default based on Action in Motion's Research
@@ -133,10 +141,12 @@ public class KinectSensor : MonoBehaviour, KinectInterface {
 			}
 			colorImage = new Color32[640*480];
 			
-			double theta = Mathf.Atan((lookAt.y+kinectCenter.y-sensorHeight) / (lookAt.z + kinectCenter.z));
-			long kinectAngle = (long)(theta * (180 / Mathf.PI));
-			NativeMethods.NuiCameraSetAngle(kinectAngle);
-			
+			if(AdjustSensorAngle)
+			{
+				double theta = Mathf.Atan((lookAt.y+kinectCenter.y-sensorHeight) / (lookAt.z + kinectCenter.z));
+				long kinectAngle = (long)(theta * (180 / Mathf.PI));
+				NativeMethods.NuiCameraSetAngle(kinectAngle);
+			}
 			DontDestroyOnLoad(gameObject);
 			KinectSensor.Instance = this;
 			NativeMethods.NuiSetDeviceStatusCallback(new NuiStatusProc(), IntPtr.Zero);

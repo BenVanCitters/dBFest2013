@@ -33,10 +33,19 @@ public class KinectRagdollConnection : MonoBehaviour {
 	void setTracking(bool tracking)
 	{
 		isTrackingKinect = tracking;
-			
+		
+		
 		kinectSkeleton.enabled = isTrackingKinect;
-		LeftHandParticles.gameObject.SetActive( isTrackingKinect);
-		RightHandParticles.gameObject.SetActive( isTrackingKinect);
+		if(tracking)
+		{
+			LeftHandParticles.Play();
+			RightHandParticles.Play();
+		}
+		else
+		{
+			LeftHandParticles.Stop();
+			RightHandParticles.Stop();
+		}
 //			RightHandParticles.enableEmission = isTrackingKinect;
 		foreach (Transform child in ragdollBase.transform)
 		{
