@@ -9,7 +9,7 @@ public class KinectRagdollConnection : MonoBehaviour {
 	public Rigidbody ragdollBase;
 	public KinectModelControllerTorso kinectSkeleton;
 	//public int KinectSkeletonIndex = 0;
-	
+	 	 	
 	[HideInInspector]
 	public bool isTrackingKinect = false;
 	// Use this for initialization
@@ -25,7 +25,7 @@ public class KinectRagdollConnection : MonoBehaviour {
 		bool isNextFrameTracked= (kinectSkeleton.sw.trackedPlayers[kinectSkeleton.player] >= 0);
 		if(isTrackingKinect != isNextFrameTracked)	
 		{
-			setTracking(isTrackingKinect);
+			setTracking(isNextFrameTracked);
 		}
 	}
 	
